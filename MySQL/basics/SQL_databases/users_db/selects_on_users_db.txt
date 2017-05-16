@@ -1,0 +1,37 @@
+# select our applicants
+select applicants.id AS 'applicant ID', 
+CONCAT(applicants.first_name,applicants.last_name) AS 'applicant Name'
+from mydb.applicants;
+
+# select our jobs
+select jobs.id AS 'job ID', jobs.title AS 'Job Title' from mydb.jobs;
+
+# select our applications
+select applications.id AS 'application ID', applications.job_id AS 'job ID',
+applications.applicant_id AS 'applicant ID' 
+from mydb.applications;
+
+# select our start_dates
+select start_dates.id AS 'start date ID', start_dates.date AS 'start date',
+start_dates.job_id AS 'job ID'
+from mydb.start_dates;
+
+# ----------------------------------
+
+# Which job did our applicants apply to?
+select applicants.id AS 'applicant ID', 
+CONCAT(applicants.first_name,applicants.last_name) AS 'applicant Name',
+applications.job_id AS 'job ID'
+from mydb.applicants
+left join mydb.applications on applications.applicant_id = applicants.id;
+
+
+# Which applicants have applied to jobs, and which job?
+# the below is a simple join, so will not return instances if a null application_id
+select applicants.id AS 'applicant ID', 
+CONCAT(applicants.first_name,applicants.last_name) AS 'applicant Name',
+applications.job_id AS 'job ID'
+from mydb.applicants
+join mydb.applications on applications.applicant_id = applicants.id;
+
+# ----------------------------------
