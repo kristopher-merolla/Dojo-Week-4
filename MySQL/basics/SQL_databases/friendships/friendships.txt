@@ -1,0 +1,8 @@
+select * from mydb.friendships;
+
+select * from mydb.users;
+
+select A.first_name, A.last_name, B.first_name AS 'friend_first_name', B.last_name AS 'friend_last_name'
+from mydb.users A, mydb.users B, mydb.friendships C
+where A.id = C.user_id and B.id = C.friend_id
+order by A.first_name, B.last_name;
