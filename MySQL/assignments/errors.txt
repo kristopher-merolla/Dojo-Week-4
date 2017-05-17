@@ -1,0 +1,43 @@
+MySQL Connection Errors Assignment
+
+Go into the credentials config of mysqlconnection.py and produce as many "mysql connection" errors as possible. Try using mistyped strings, incorrect usernames, unopened ports, and whatever other errors you can create.
+
+------------
+Error:
+OperationalError: (_mysql_exceptions.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1' (61)")
+
+Solution:
+Updated the port to correct value (in my case, '8889') in the mysqlconnecton.py file
+------------
+
+------------
+Error:
+OperationalError: (_mysql_exceptions.OperationalError) (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+
+Solution:
+Updated the password to correct value (in my case, 'root') in the mysqlconnection.py file
+------------
+
+------------
+Error:
+OperationalError: (_mysql_exceptions.OperationalError) (1045, "Access denied for user 'rsoot'@'localhost' (using password: YES)")
+
+Solution:
+Updated the user to correct value (in my case, 'root') in the mysqlconnection.py file
+------------
+
+------------
+Error:
+OperationalError: (_mysql_exceptions.OperationalError) (1045, "Access denied for user 'root'@'localhost' (using password: NO)")
+
+Solution:
+Password in the mysqlconnection.py file was null (ie as '') once added password (in my case, 'root') issue resolved
+------------
+
+------------
+Error:
+
+
+Solution:
+
+------------
