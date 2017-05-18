@@ -16,6 +16,7 @@
 				<label for="password_confirmation">Password Confirmation:<input type="password" name="password_confirmation" id="password_confirmation"></label><br>
 				<input type="submit" value="Register">
 			</form>
+			{{error_message | safe}} <!-- if an error message exists after a register attempt, it will be displayed here -->
 		<br>
 		</div>
 	</div>
