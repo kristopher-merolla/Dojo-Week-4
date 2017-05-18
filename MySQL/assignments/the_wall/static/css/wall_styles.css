@@ -12,7 +12,7 @@
 
 #header {
 	display: inline-block;
-	padding-right: 330px;
+	padding-right: 430px;
 }
 
 #active_user {
@@ -31,9 +31,16 @@
 
 .post {
 	margin-left: 20px;
-	background-color: lightblue;
 }
 
 #comment_button {
-	margin-left: 723px;
+	margin-left: 685px;
+}
+
+#comment_box {
+	margin-left: 20px;
+}
+
+#comment_post {
+	margin-left: 658px;
 }

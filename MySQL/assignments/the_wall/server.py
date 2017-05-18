@@ -31,9 +31,12 @@ def active_user():
 	if (session.get('active_user') == None): # if no active user, redirect to the login page
 		return redirect('/')
 	else:
+		# if the user is logged in, pull all posts and all comments from all users
 		query_posts = "SELECT posts.id,CONCAT(users.first_name,' ',users.last_name) AS name,posts.message,CONCAT(MONTHNAME(posts.created_at), ' ', DAY(posts.created_at), ', ', YEAR(posts.created_at)) AS date from posts join users on users.id = posts.user_id"
 		posts = mysql.query_db(query_posts)
-		return render_template('active.html', all_posts = posts) # if active user is available, go to the wall (active.html)
+		query_comments = "SELECT comments.post_id, comments.user_id, comments.comment, CONCAT(MONTHNAME(comments.created_at), ' ', DAY(comments.created_at), ', ', YEAR(comments.created_at)) AS date, CONCAT(users.first_name,' ',users.last_name) AS name from comments join users on users.id = comments.user_id"
+		comments = mysql.query_db(query_comments)
+		return render_template('active.html', all_posts = posts, all_comments = comments) # if active user is available, go to the wall (active.html)
 
 # PAGE TO LOGIN EXISTING USER
 @app.route('/login', methods=['POST'])
@@ -142,18 +145,27 @@ def new_post():
 			return redirect('/thewall')
 	# if we are dealing with a new comment (NOT a new post)
 	if (request.form['new_post'] == 'new_comment'):
-		print "new comment"
-		return	redirect('/thewall/comment')
+		print "new comment coming..."
+		# if the comment is blank, return to the wall
+		if (len(request.form['comment_post']) == 0):
+			return redirect('/thewall')
+		# else (if the comment is NOT blank) post the comment and return to the wall
+		else:
+			grab_user_id = "SELECT id FROM users WHERE email = :email"
+			grab_data = {'email': session['active_user']}
+			post_id = int(request.form['post_index'])
+			print "len not 0"
+			user_id = mysql.query_db(grab_user_id, grab_data)[0]['id']
+			comment = request.form['comment_post']
+
+			new_comment = "INSERT INTO comments (post_id, user_id, comment, created_at, updated_at) VALUES (:post_id, :user_id, :comment, NOW(), NOW())"
+			comment_data = {'post_id': post_id, 'user_id': user_id, 'comment': comment}
+			mysql.query_db(new_comment,comment_data)
+			print "new comment added to database"
+			return	redirect('/thewall')
 
 
-@app.route('/thewall/comment') # redirect to here when login successful
-def active_comment():
-	if (session.get('active_user') == None): # if no active user, redirect to the login page
-		return redirect('/')
-	else:
-		query_posts = "SELECT posts.id,CONCAT(users.first_name,' ',users.last_name) AS name,posts.message,CONCAT(MONTHNAME(posts.created_at), ' ', DAY(posts.created_at), ', ', YEAR(posts.created_at)) AS date from posts join users on users.id = posts.user_id"
-		posts = mysql.query_db(query_posts)
-		return render_template('active.html', all_posts = posts) # if active user is available, go to the wall (active.html)
+
 
 
 app.run(debug=True)

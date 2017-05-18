@@ -9,7 +9,7 @@
 		<div id="top_bar">
 			<h2 id="header">CodingDojo Wall</h2>
 			<div id="right_header">
-				<h4 id="active_user">Active User: {{session['active_user']}} | </h4>
+				<h4 id="active_user">{{session['active_user']}} | </h4>
 				<a href="/">log off</a>
 			</div>
 		</div>
@@ -20,15 +20,27 @@
 				<input type="hidden" name="new_post" value="new_post"> <!-- Hidden value to now if we're making a new post -->
 				<input type="submit" value="Post a message">
 			</form>
+			<br>
 			{% for post in all_posts %}
 				<div class="post">
 					<h4>{{ post['name'] }} - {{ post['date'] }}</h4>
 					<p>{{ post['message'] }}</p>
+					{% for comment in all_comments %}
+						<div id="comment_box">
+						{% if (comment['post_id'] == post['id']): %}
+							<h4>{{ comment['name'] }} - {{ comment['date'] }}</h4>
+							<p>{{ comment['comment'] }}</p>
+						{% endif %}
+						</div>
+					{% endfor %}
 					<form action='/post' method='POST'>
 						<input type="hidden" name="new_post" value="new_comment"> <!-- Hidden value to now if we're making a new comment -->
-						<input type="submit" value="Comment" id="comment_button">
+						<input type="hidden" name="post_index" value="{{ post['id'] }}"> <!-- Hidden value to now if we're making a new comment -->
+						<input type="text" name="comment_post" id="comment_post">
+						<input type="submit" value="Post a comment" id="comment_button">
 					</form>
 				</div>
+				<br>
 			{% endfor %}
 		</div>
 	</div>
