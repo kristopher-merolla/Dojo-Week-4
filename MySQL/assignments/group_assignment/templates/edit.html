@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit Users</title>
+</head>
+<body>
+  <h1>Edit User {{ user }}</h1>
+  <form action="/users/update" method='POST'>
+  	<input type='hidden' name='user_id' value= "{{user}}">
+    <label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label>
+    <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label>
+    <label for="email">Email:<input type="text" name="email" id="email"></label>
+    <input type="submit" value="Update">
+  </form>
+  <a href="/users/{{ user }}">Show</a> | <a href='/'>Go back</a>
+</body>
+</html>

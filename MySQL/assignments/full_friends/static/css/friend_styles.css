@@ -1,0 +1,14 @@
+table#friend_table {
+    background-color: black;
+}
+
+table#friend_table tr:nth-child(even) {
+    background-color: #eee;
+}
+table#friend_table tr:nth-child(odd) {
+    background-color: #fff;
+}
+table#friend_table th {
+    color: white;
+    background-color: black;
+}

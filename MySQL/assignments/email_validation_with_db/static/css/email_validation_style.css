@@ -1,0 +1,33 @@
+#big_wrapper {
+	vertical-align: center;
+	margin: 0px auto;
+	width: auto;
+	height: auto;
+}
+
+#invalid_box {
+	background-color: red;
+	color: white;
+	border: 1px solid black;
+	padding: 0px 20px;
+	width: 300px;
+	height: 100px;
+	display: block;
+	text-align: center;
+}
+
+#non_box {
+	width: 300px;
+	height: 100px;
+	display: block;
+	background-color: lightblue;
+	text-align: center;
+}
+
+#success_box {
+	width: 300px;
+	height: 100px;
+	display: block;
+	background-color: green;
+	text-align: center;
+}

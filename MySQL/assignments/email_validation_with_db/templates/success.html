@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Success Page</title>
+	<link rel='stylesheet' type='text/css' href="{{ url_for('static',filename='css/email_validation_style.css')}}">
+</head>
+<body>
+	<div id="big_wrapper">
+		<div id="success_box">
+			<p>The email address you entered ({{ email_added }}) is a VALID email address! Thank you!</p>
+		</div>
+		<br><br>
+		<h2>Email Addresses Entered:</h2><br>
+		{% for i in all_emails: %}
+		<tr>
+			<td>{{ i['email'] }}</td>
+			<td>{{ i['created_at'] }}</td><br>
+		</tr>
+		{% endfor %}
+	</div>
+</body>
+</html>
