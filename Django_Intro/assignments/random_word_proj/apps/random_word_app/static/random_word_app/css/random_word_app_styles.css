@@ -1,0 +1,13 @@
+#big_wrapper {
+	margin: 0px auto;
+	text-align: center;
+}
+
+#random_word_box {
+	background-color: lightblue;
+	width: 400px;
+	height: 150px;
+	border: 2px solid black;
+	margin: auto;
+	vertical-align: center;
+}

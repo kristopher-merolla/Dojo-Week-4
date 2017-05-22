@@ -30,11 +30,11 @@ $ python ../manage.py startapp first_app #notice that this is first_app and not 
 $ cd first_app
 $ touch urls.py # make /apps/first_app/urls.py
 $ mkdir templates
-$ mkdir templates/first_app 
+$ mkdir templates/first_app
 #also add any html files you want i.e. touch templates/first_app/index.html
 
 # open the directory in sublime
-$ cd .. 
+$ cd ..
 $ cd ..
 $ subl . #need to have sublime shortcut enabled
 

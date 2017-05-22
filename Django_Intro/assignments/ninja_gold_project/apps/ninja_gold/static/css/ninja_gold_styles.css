@@ -1,0 +1,38 @@
+#big_wrapper {
+	padding: 25px;
+}
+
+#action_space {
+	text-align: center;
+}
+
+#gold_amt {
+	display: inline-block;
+	background-color: green;
+	color: white;
+	text-align: center;
+	border: 2px solid black;
+	width: 75px;
+	height: auto;
+}
+
+#action_box {
+	width: 200px;
+	height: 200px;
+	border: 2px solid black;
+	display: inline-block;
+	margin-right: 25px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+#activity_box {
+	width: auto;
+	height: 200px;
+	border: 2px solid black;
+	overflow: scroll;	/*use overflow here to setup an activity log*/
+}
+
+#console {
+	margin: 5px 0px 0px 5px;
+}
